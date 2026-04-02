@@ -14,8 +14,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   publish:
@@ -74,10 +72,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/
-
-      - uses: actions/deploy-pages@v4
+  deploy-pages:
+    needs: publish
+    uses: ./.github/workflows/pages.yml
