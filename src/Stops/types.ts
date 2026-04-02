@@ -78,12 +78,12 @@ export type Address = {
 
 export type StopSearchResponse = {
     stops: Stop[];
-    lines: any[];
-    poiTypes: any[];
+    lines: unknown[];
+    poiTypes: unknown[];
     pois: POI[];
-    cities: any[];
+    cities: unknown[];
     addresses: Address[];
-    recent: any[];
+    recent: unknown[];
 };
 
 export type Coordinates = {
