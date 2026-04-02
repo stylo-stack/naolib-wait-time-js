@@ -2,10 +2,10 @@ import axios from "axios";
 import { CoordinatesError } from "../errors/CoordinatesError";
 import { ApiError } from "../errors/ApiError";
 import { isInLoireAtlantique } from "./utils";
-import { naolibUrl, tanBaseURL } from "../consts";
+import { naolibUrl } from "../consts";
+import { getBaseURL } from "../config";
 import { ArretStop, Coordinates, StopSearchResponse } from "./types";
 
-const arretsUrl = `${tanBaseURL}/arrets.json`;
 const naolibSearchUrl = `${naolibUrl}/api/global/search`;
 
 /**
@@ -18,6 +18,7 @@ export const getStops = async (coordinates?: Coordinates): Promise<ArretStop[]> 
         throw new CoordinatesError(coordinates);
     }
 
+    const arretsUrl = `${getBaseURL()}/arrets.json`;
     const url = coordinates
         ? `${arretsUrl}/${coordinates.latitude}/${coordinates.longitude}`
         : arretsUrl;

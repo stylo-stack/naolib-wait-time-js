@@ -1,9 +1,7 @@
 import axios from "axios";
-import { tanBaseURL } from "../consts";
+import { getBaseURL } from "../config";
 import { ApiError } from "../errors/ApiError";
 import { WaitTime } from "./types";
-
-const waitTimeUrl = `${tanBaseURL}/tempsattente.json`;
 
 /**
  * Returns real-time next departures for all lines serving a stop zone.
@@ -13,7 +11,7 @@ const waitTimeUrl = `${tanBaseURL}/tempsattente.json`;
 export const getWaitTimeForPlace = async (codeLieu: string): Promise<WaitTime[]> => {
     if (!codeLieu.trim()) throw new Error("codeLieu must not be empty");
 
-    const url = `${waitTimeUrl}/${codeLieu.trim()}`;
+    const url = `${getBaseURL()}/tempsattente.json/${codeLieu.trim()}`;
     try {
         const { data } = await axios.get<WaitTime[]>(url, {
             headers: { "Accept-Language": "fr_FR" },

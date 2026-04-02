@@ -1,9 +1,7 @@
 import axios from "axios";
-import { tanBaseURL } from "../consts";
+import { getBaseURL } from "../config";
 import { ApiError } from "../errors/ApiError";
 import { Schedule } from "./types";
-
-const horairesUrl = `${tanBaseURL}/horairesarret.json`;
 
 /**
  * Returns the full schedule for a specific stop, line, and direction.
@@ -20,7 +18,7 @@ export const getSchedule = async (
     if (!codeArret.trim()) throw new Error("codeArret must not be empty");
     if (!numLigne.trim()) throw new Error("numLigne must not be empty");
 
-    const url = `${horairesUrl}/${codeArret.trim()}/${numLigne.trim()}/${sens}`;
+    const url = `${getBaseURL()}/horairesarret.json/${codeArret.trim()}/${numLigne.trim()}/${sens}`;
     try {
         const { data } = await axios.get<Schedule>(url, {
             headers: { "Accept-Language": "fr_FR" },

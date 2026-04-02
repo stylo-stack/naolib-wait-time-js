@@ -19,18 +19,24 @@ npm install
 npm run build
 ```
 
-## Environment
+## Configuration
 
-By default the library targets the **preprod** environment. Set `ENVIRONMENT=prod` to use production:
+The library targets the **prod** environment by default. Call `configure()` once at startup to switch environments:
 
-```bash
-ENVIRONMENT=prod node dist/index.js
+```ts
+import { configure } from "naolib-wait-time-js";
+
+// Use preprod (e.g. in tests)
+configure({ env: "preprod" });
+
+// Switch back to prod (the default)
+configure({ env: "prod" });
 ```
 
-| Environment | Base URL |
+| `env` value | Base URL |
 |-------------|----------|
-| preprod (default) | `https://openv2-preprod.tan.fr/ewp` |
-| prod | `https://open.tan.fr/ewp` |
+| `"prod"` *(default)* | `https://open.tan.fr/ewp` |
+| `"preprod"` | `https://openv2-preprod.tan.fr/ewp` |
 
 ---
 
