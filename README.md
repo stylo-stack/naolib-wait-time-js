@@ -15,8 +15,7 @@ And one unofficial endpoint:
 ## Installation
 
 ```bash
-npm install
-npm run build
+npm install naolib-wait-time-js
 ```
 
 ## Configuration
