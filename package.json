@@ -1,6 +1,6 @@
 {
   "name": "naolib-wait-time-js",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "TypeScript library for the SEMITAN public transport API (Nantes, France)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
