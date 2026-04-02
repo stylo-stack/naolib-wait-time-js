@@ -51,12 +51,13 @@ jobs:
           NEW_VERSION=$(npm version ${{ github.event.inputs.release_type }} --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Commit and tag
+      - name: Commit, tag and push
         run: |
           git add package.json package-lock.json
           git commit -m "chore: release ${{ steps.version.outputs.new_version }}"
+          git push origin main
           git tag ${{ steps.version.outputs.new_version }}
-          git push origin main --follow-tags
+          git push origin ${{ steps.version.outputs.new_version }}
 
       - name: Create GitHub release
         run: |
