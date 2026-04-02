@@ -1,3 +1,5 @@
+export { configure } from "./config";
+export type { Environment } from "./config";
 export * from "./Stops/index";
 export * from "./Stops/types";
 export * from "./WaitTime/index";
